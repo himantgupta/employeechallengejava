@@ -79,13 +79,13 @@ public class Employee {
 
     @Override
     public String toString() {
-    	String response = " { employeeId=" + this.getEmployeeId()
-		+ ", employeeStatus=" + this.getEmployeeStatus() 
-		+ ", employeeFName=" + this.getEmployeeFName()
-		+ ", employeeMName=" + this.getEmployeeMName()
-		+ ", employeeLName=" + this.getEmployeeLName() 
-		+ ", employeeBDaye=" + this.getEmployeeBDay() 
-		+ ", employeeJoinDate=" + this.getEmployeeJoinDate() 
+    	String response = " { employeeId:" + this.getEmployeeId()
+		+ ", employeeStatus:" + this.getEmployeeStatus() 
+		+ ", employeeFName:" + this.getEmployeeFName()
+		+ ", employeeMName:" + this.getEmployeeMName()
+		+ ", employeeLName:" + this.getEmployeeLName() 
+		+ ", employeeBDaye:" + this.getEmployeeBDay() 
+		+ ", employeeJoinDate:" + this.getEmployeeJoinDate() 
 		+ "}"; 
     	
     	return response;
