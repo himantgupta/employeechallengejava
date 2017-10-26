@@ -1,7 +1,6 @@
 package employeechallenge;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -86,6 +85,7 @@ public class EmployeeChallengeHandler implements RequestHandler<Employee, String
             	            	.withInt("employeeId", currentNode.path("employeeId").asInt())
             	            	.withString("employeeStatus", currentNode.path("employeeStatus").asText())
             	    	        .withString("employeeFName", currentNode.path("employeeFName").asText())
+            	    	        .withString("employeeMName", currentNode.path("employeeMName").asText())
             	                .withString("employeeLName", currentNode.path("employeeLName").asText())
             	                .withString("employeeBDay", currentNode.path("employeeBDay").asText())
             	                .withString("employeeJoinDate", currentNode.path("employeeJoinDate").asText())));
