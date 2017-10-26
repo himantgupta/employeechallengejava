@@ -9,6 +9,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 public class Employee {
 	private int employeeId;
 	private String employeeFName;
+	private String employeeMName;
 	private String employeeLName;
 	private String employeeBDay;
 	private String employeeJoinDate;
@@ -41,6 +42,14 @@ public class Employee {
         this.employeeFName = employeeFName;
     }
 
+    @DynamoDBAttribute(attributeName = "employeeMName")
+    public String getEmployeeMName() {
+        return employeeMName;
+    }
+    public void setEmployeeMName(String employeeMName) {
+        this.employeeMName = employeeMName;
+    }
+    
     @DynamoDBAttribute(attributeName = "employeeLName")
     public String getEmployeeLName() {
         return employeeLName;
@@ -72,7 +81,8 @@ public class Employee {
     public String toString() {
     	String response = " { employeeId=" + this.getEmployeeId()
 		+ ", employeeStatus=" + this.getEmployeeStatus() 
-		+ ", employeeFName=" + this.getEmployeeFName() 
+		+ ", employeeFName=" + this.getEmployeeFName()
+		+ ", employeeMName=" + this.getEmployeeMName()
 		+ ", employeeLName=" + this.getEmployeeLName() 
 		+ ", employeeBDaye=" + this.getEmployeeBDay() 
 		+ ", employeeJoinDate=" + this.getEmployeeJoinDate() 
