@@ -1,5 +1,5 @@
 # employeechallengejava
-AWS Lambda + API Gateway + DynamoDB + IAM  + Java Project
+GET Service with get all employees  using AWS Lambda + API Gateway + DynamoDB + IAM  and JAVA.
 
 The project assumes that you have the AWS tool kit installed in your eclipse IDE OR you are conversant with AWS CLI.
 The project assumes that you are conversant with NoSql DB concepts.
