@@ -2,6 +2,7 @@ package employeechallenge;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIndexHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
@@ -24,7 +25,7 @@ public class Employee {
         this.employeeId = id;
     }
 
-    @DynamoDBRangeKey(attributeName = "employeeStatus")
+    @DynamoDBIndexHashKey(attributeName = "employeeStatus")
     public String getEmployeeStatus() {
         return employeeStatus;
     }
