@@ -29,11 +29,11 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 
 public class EmployeeChallengeHandler implements RequestStreamHandler, RequestHandler<Object, Object>{
 
-    private DynamoDB dynamoDb;
+	private DynamoDB dynamoDb;
     private String DYNAMODB_TABLE_NAME = "Employee";
     private Regions REGION = Regions.US_WEST_2;
     private AmazonDynamoDBClient client;
-    List<Employee> response;
+    
     
     ///////////////////////////////////////////////////////////////////////////////////////////
     @Override
