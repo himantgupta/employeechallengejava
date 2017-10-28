@@ -25,7 +25,7 @@ public class Employee {
         this.employeeId = id;
     }
 
-    @DynamoDBIndexHashKey(attributeName = "employeeStatus")
+    @DynamoDBIndexHashKey(globalSecondaryIndexName = "employeeStatus")
     public String getEmployeeStatus() {
         return employeeStatus;
     }
