@@ -1,6 +1,10 @@
 package employeechallenge;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -13,15 +17,17 @@ import com.amazonaws.services.dynamodbv2.document.spec.PutItemSpec;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 
-public class EmployeeChallengeHandler implements RequestHandler<Employee, String> {
+public class EmployeeChallengeHandler implements RequestStreamHandler, RequestHandler<Object, Object>{
 
 	private DynamoDB dynamoDb;
     private String DYNAMODB_TABLE_NAME = "Employee";
@@ -31,7 +37,7 @@ public class EmployeeChallengeHandler implements RequestHandler<Employee, String
     
     ///////////////////////////////////////////////////////////////////////////////////////////
     @Override
-    public String handleRequest(Employee input, Context context) {
+    public void handleRequest(InputStream input, OutputStream outputStream, Context context) throws JsonProcessingException, IOException {
        context.getLogger().log("Entering");
        this.initDynamoDbClient();
        // -----------------------Call the method to load initial data ----------------------------------------
@@ -58,7 +64,12 @@ public class EmployeeChallengeHandler implements RequestHandler<Employee, String
         List<Employee> response = mapper.scan(Employee.class, dynamoDBScanExpression);
         String finalResponse = setResponse(response);
            
-        return finalResponse;
+        try {
+    		outputStream.write(finalResponse.toString().getBytes(Charset.forName("UTF-8")));
+           } catch (IOException e) {
+    		// TODO Auto-generated catch block
+    		e.printStackTrace();
+           }    
     }
     
     
@@ -124,5 +135,12 @@ public class EmployeeChallengeHandler implements RequestHandler<Employee, String
 		}
 		response += "]";
 		return response;
+	}
+
+
+	@Override
+	public Object handleRequest(Object arg0, Context arg1) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
