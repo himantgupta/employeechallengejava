@@ -65,7 +65,7 @@ public class EmployeeChallengeHandler implements RequestStreamHandler, RequestHa
         String finalResponse = setResponse(response);
            
         try {
-    		outputStream.write(finalResponse.toString().getBytes(Charset.forName("UTF-8")));
+    		outputStream.write(finalResponse.getBytes(Charset.forName("UTF-8")));
            } catch (IOException e) {
     		// TODO Auto-generated catch block
     		e.printStackTrace();
